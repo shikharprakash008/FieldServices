@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login"
+    tools:context=".techLogin"
     android:orientation="vertical"
     android:background="#fff"
     android:padding="20dp">
@@ -59,7 +59,7 @@
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:passwordToggleEnabled="true"
-           >
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -102,4 +102,5 @@
             android:textColor="#000"/>
 
     </LinearLayout>
+
 </LinearLayout>

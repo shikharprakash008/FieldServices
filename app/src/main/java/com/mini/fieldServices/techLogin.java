@@ -21,18 +21,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class login extends AppCompatActivity {
+public class techLogin extends AppCompatActivity {
     Button callSignUp, login_btn;
     ImageView image;
     TextView logoText, sloganText;
     TextInputLayout username, password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
-        //Hooks
+        setContentView(R.layout.activity_tech_login);
         callSignUp = findViewById(R.id.signup_screen);
         image = findViewById(R.id.logo_image);
         logoText = findViewById(R.id.logo_name);
@@ -43,7 +41,7 @@ public class login extends AppCompatActivity {
         callSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(login.this, SignUp.class);
+                Intent intent = new Intent(techLogin.this, SignUp.class);
                 Pair[] pairs = new Pair[7];
                 pairs[0] = new Pair<View, String>(image, "logo_image");
                 pairs[1] = new Pair<View, String>(logoText, "logo_text");
@@ -53,7 +51,7 @@ public class login extends AppCompatActivity {
                 pairs[5] = new Pair<View, String>(login_btn, "button_tran");
                 pairs[6] = new Pair<View, String>(callSignUp, "login_signup_tran");
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(login.this, pairs);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(techLogin.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
             }
@@ -106,7 +104,7 @@ public class login extends AppCompatActivity {
                         i.putExtra("password",nameFromDb);
                         startActivity(i);
                     }
-                   else
+                    else
                     {
                         password.setError("Wrong Password");
                         password.requestFocus();
