@@ -46,6 +46,7 @@
 
 
         <LinearLayout
+            android:id="@+id/slot_oneLayout"
             android:orientation="vertical"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
@@ -151,6 +152,7 @@
 
 
         <LinearLayout
+            android:id="@+id/slot_twoLayout"
             android:orientation="vertical"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"

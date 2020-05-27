@@ -24,6 +24,7 @@ public class profile extends AppCompatActivity {
     DatabaseReference reference;
 
     String _USERNAME,_NAME,_EMAIL,PHONENO,_PASSWORD;
+    Button update;
 
 
     @Override
@@ -72,9 +73,19 @@ public class profile extends AppCompatActivity {
         password = findViewById(R.id.password);
         fullNameLabel = findViewById(R.id.fullname_field);
         usernameLabel = findViewById(R.id.username_field);
+        update=findViewById(R.id.update);
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         showAllUserData();
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isNameChnaged() || isPasswordChanged()){
+                    Toast.makeText(profile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
@@ -94,9 +105,7 @@ public class profile extends AppCompatActivity {
 
     }
     public void update(View view){
-         if (isNameChnaged() || isPasswordChanged()){
-             Toast.makeText(this, "Data updated successfully", Toast.LENGTH_SHORT).show();
-         }
+
     }
 
     private boolean isPasswordChanged() {

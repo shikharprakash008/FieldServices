@@ -100,10 +100,10 @@ public class login extends AppCompatActivity {
 
                         Intent i = new Intent(getApplicationContext(),Home.class);
                         i.putExtra("name",nameFromDb);
-                        i.putExtra("username",nameFromDb);
-                        i.putExtra("email",nameFromDb);
-                        i.putExtra("phoneNo",nameFromDb);
-                        i.putExtra("password",nameFromDb);
+                        i.putExtra("username",usernameFromDb);
+                        i.putExtra("email",emailFromDb);
+                        i.putExtra("phoneNo",phoneNoFromDb);
+                        i.putExtra("password",passwordFromDb);
                         startActivity(i);
                     }
                    else

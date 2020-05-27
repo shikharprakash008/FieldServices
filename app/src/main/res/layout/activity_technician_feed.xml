@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feed"
+    tools:context=".technicianFeed"
     android:background="#fff"
-    >
+   >
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
@@ -19,7 +19,7 @@
         android:layout_below="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  Feed"
+        android:text="  Logs\n  update"
         android:textSize="40sp"
         android:transitionName="logo_text"
         android:fontFamily="@font/bungee"
@@ -30,29 +30,34 @@
         android:layout_below="@+id/contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="   Another Look at Your Day."
+        android:text="    The Future of Memory"
         android:textSize="18sp"
         android:transitionName="logo_desc"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customerListRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="4dp"
         android:layout_below="@+id/tagline"
-        android:layout_above="@+id/botton_navigation"
+        android:layout_above="@+id/update"
         android:scrollbars="vertical"
         />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-android:id="@+id/botton_navigation"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_alignParentBottom="true"
-app:itemBackground="@color/whiteTextColor"
-app:itemIconTint="@drawable/selector"
-app:itemTextColor="@drawable/selector"
-app:menu="@menu/navigation_menu" />
+    <Button
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Log's"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:background="#000"
+        android:textColor="#fff"
+        android:gravity="center_horizontal|center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+
 
 </RelativeLayout>

@@ -57,12 +57,12 @@ public class techSignup extends AppCompatActivity {
                 String phoneNo = regPhoneNo.getEditText().getText().toString();
                 String password = regPassword.getEditText().getText().toString();
                 //intializing the user helper class
-                userHelperClass pushData =new userHelperClass(name , username,  email, phoneNo, password);
+                serviceHelperClass pushData =new serviceHelperClass(name , username,  email, phoneNo, password);
                 reference.child(username).setValue(pushData);
 
                 Toast.makeText(techSignup.this, "Your Account has been created successfully", Toast.LENGTH_SHORT).show();
 
-                Intent login = new Intent(getApplicationContext(), login.class);
+                Intent login = new Intent(getApplicationContext(), techLogin.class);
                 startActivity(login);
                 finish();
 

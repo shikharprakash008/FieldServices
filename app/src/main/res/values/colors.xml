@@ -11,4 +11,11 @@
 
     <!--colors for card-->
     <color name="whiteCardColor">#fff</color>
+
+
+    <color name="contentBodyColor">#000</color>
+    <color name="contentTextColor">#fff</color>
+    <color name="bottomNavigationBackground">#000</color>
+    <color name="miniTitleColor">#fff</color>
+
 </resources>

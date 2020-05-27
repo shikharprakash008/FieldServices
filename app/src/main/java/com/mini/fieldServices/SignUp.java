@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -153,7 +154,25 @@ public class SignUp extends AppCompatActivity {
             return true;
         }
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+        {
+            if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified())
+            {
+                Intent intent = new Intent(this,login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        }
+    }
 
 
-
+    public void goToLogin(View view) {
+        Intent i = new Intent(SignUp.this,login.class);
+        startActivity(i);
+        finish();
+    }
 }

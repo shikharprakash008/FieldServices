@@ -41,7 +41,7 @@ public class techLogin extends AppCompatActivity {
         callSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(techLogin.this, SignUp.class);
+                Intent intent = new Intent(techLogin.this, techSignup.class);
                 Pair[] pairs = new Pair[7];
                 pairs[0] = new Pair<View, String>(image, "logo_image");
                 pairs[1] = new Pair<View, String>(logoText, "logo_text");
@@ -76,7 +76,7 @@ public class techLogin extends AppCompatActivity {
         final String userEnteredUsername =username.getEditText().getText().toString().trim();
         final String userEnteredPassword =password.getEditText().getText().toString().trim();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Technician");
         Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -96,7 +96,7 @@ public class techLogin extends AppCompatActivity {
                         String phoneNoFromDb= dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
                         String emailFromDb= dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
 
-                        Intent i = new Intent(getApplicationContext(),Home.class);
+                        Intent i = new Intent(getApplicationContext(),technicianFeed.class);
                         i.putExtra("name",nameFromDb);
                         i.putExtra("username",nameFromDb);
                         i.putExtra("email",nameFromDb);
