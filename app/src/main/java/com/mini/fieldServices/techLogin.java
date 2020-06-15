@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -78,6 +80,10 @@ public class techLogin extends AppCompatActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Technician");
         Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
+        final SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putBoolean("activity_executed", true);
+        edt.apply();
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

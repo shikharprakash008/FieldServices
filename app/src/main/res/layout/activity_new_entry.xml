@@ -10,16 +10,17 @@
     android:padding="20dp">
 
     <ImageView
+        android:layout_marginTop="0dp"
         android:id="@+id/logo_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:transitionName="logo_image"
         android:src="@drawable/main_logo"/>
     <TextView
         android:id="@+id/logo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="stock entry"
+        android:text="Logs's Update"
         android:textSize="40sp"
         android:transitionName="logo_text"
         android:fontFamily="@font/bungee"
@@ -35,8 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="5dp"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reg_name"
@@ -106,9 +107,13 @@
 
 
 
+
+
     </LinearLayout>
     <Button
         android:id="@+id/reg_btn"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="UPDATE STOCK"

@@ -2,7 +2,7 @@ package com.mini.fieldServices;
 
 public class logHelperCLass {
 
-    String name,time,date,device,details;
+    String name,time,date,device,details,slotNo;
 
     public logHelperCLass(String name, String time, String date, String device, String details) {
         this.name = name;

@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -40,6 +42,7 @@ public class login extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login_btn = findViewById(R.id.login_btn);
+
         callSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +61,10 @@ public class login extends AppCompatActivity {
                 }
             }
         });
-
+        final  SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putBoolean("activity_executed", true);
+        edt.apply();
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +73,10 @@ public class login extends AppCompatActivity {
                 }
                 else
                 {
-                    isUser();
+
+                        isUser();
+
+
                 }
 
             }

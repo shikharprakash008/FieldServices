@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class technicianFeed extends AppCompatActivity {
     Button update;
     RecyclerView recyclerView;
+    DatabaseReference reference;
     private ArrayList<FeedDataHelperClass> arrayList;
     private FirebaseRecyclerOptions<FeedDataHelperClass> options;
     private FirebaseRecyclerAdapter<FeedDataHelperClass,FirebaseViewHolder> adapter;

@@ -3,7 +3,9 @@ package com.mini.fieldServices;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -35,6 +37,8 @@ public class Splash extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
         slogan.setAnimation(bottomAnim);
+        final SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -46,7 +50,15 @@ public class Splash extends AppCompatActivity {
                 if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP)
                 {
                     ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(Splash.this,pairs);
-                    startActivity(i,options.toBundle());
+//                    if (pref.getBoolean("activity_executed", false)) {
+//                        Intent user = new Intent(Splash.this, Home.class);
+//                        startActivity(user);
+//
+//                    }
+//                    else
+//                    {
+                        startActivity(i, options.toBundle());
+                  // }
                 }
             }
 

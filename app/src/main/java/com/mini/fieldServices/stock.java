@@ -111,7 +111,7 @@ public class stock extends AppCompatActivity {
                 DateFormat df1 = new SimpleDateFormat("h:mm a");
                 String date = df1.format(Calendar.getInstance().getTime());
 
-                if (formattedDate.compareTo(s) >0)
+                if (formattedDate.compareTo(s) >=0)
                 {
                     expiry.setText("Product Expired");
                     slot_oneLayout.setBackgroundColor(Color.parseColor("#c62828"));
@@ -195,11 +195,11 @@ public class stock extends AppCompatActivity {
                 {
                     expiryTwo.setText("Product Expired");
                     slot_twoLayout.setBackgroundColor(Color.parseColor("#c62828"));
-                    Toast.makeText(stock.this, "Working", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(stock.this, "Working", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Toast.makeText(stock.this, "Not Working", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(stock.this, "Not Working", Toast.LENGTH_SHORT).show();
                     slot_twoLayout.setBackgroundColor(Color.parseColor("#fece2f"));
 
 

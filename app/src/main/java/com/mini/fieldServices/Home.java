@@ -44,9 +44,11 @@ public class Home extends AppCompatActivity {
 
     TextView temp;
     CardView cardView;
-    LinearLayout linearLayout ;
-     TextView errortext;
+    LinearLayout linearLayout ,linearlayoutTwo ;
+     TextView errortext,errorText2;
+     TextView humidity;
      String email;
+
 
     int count =0;
     String sEmail,sPassword,subject,details;
@@ -95,10 +97,16 @@ public class Home extends AppCompatActivity {
         errortext=findViewById(R.id.errorText);
         //sender email credentials
         subject="Malfunction in cooling Device";
-        email="shikharprakash005@gmail.com";
-        details="Anurag gadha hai lola sala bail insan";
+//        email="shikharprakash005@gmail.com";
+        details="There is been some issue in the cooling device ,Technician is inform to look in the problem As Soon As Possible and update the log on the Mobile application";
 
-        DatabaseReference refTemp;
+        humidity=findViewById(R.id.humidity);
+        linearlayoutTwo=findViewById(R.id.layout_main2);
+        errorText2=findViewById(R.id.errorText2);
+        cardView=findViewById(R.id.slottwo);
+
+
+        DatabaseReference refTemp,refHumidity;
         refTemp= FirebaseDatabase.getInstance().getReference("temp").child("value");
         refTemp.addValueEventListener(new ValueEventListener() {
             @Override
@@ -108,15 +116,14 @@ public class Home extends AppCompatActivity {
                 temp.setText(s);
                 float temps=Float.parseFloat(s);
 
-                if(temps>30.0 && temps<=100)
+                if(temps>30.0)
                 {
 
-                     DatabaseReference rEmail;
+                     final DatabaseReference rEmail;
                      rEmail =FirebaseDatabase.getInstance().getReference("Technician").child("shik").child("email");
                      rEmail.addValueEventListener(new ValueEventListener() {
                          @Override
                          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                              String email =dataSnapshot.getValue().toString();
                              JavaMailAPI javaMailAPI=new JavaMailAPI(this,email,subject,details);
                              javaMailAPI.execute();
@@ -132,10 +139,17 @@ public class Home extends AppCompatActivity {
                     errortext.setText("Malfunction in cooling device");
                    // Toast.makeText(Home.this, "Malfunction in cooling device", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    errortext.setText("");
+                else if(temps>=25.0 && temps<= 30.0){
+                    errortext.setText("Temperature under control");
                     linearLayout.setBackgroundColor(Color.parseColor("#fece2f"));
                 }
+                else {
+
+                    errortext.setText("");
+                    linearLayout.setBackgroundColor(Color.parseColor("#4caf50"));
+
+                }
+
 
 
 
@@ -147,6 +161,37 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
+       refHumidity=FirebaseDatabase.getInstance().getReference("humidity").child("value");
+       refHumidity.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               String humid = dataSnapshot.getValue().toString();
+
+               humidity.setText(humid);
+               float temps=Float.parseFloat(humid);
+               if (temps>=50){
+                   linearlayoutTwo.setBackgroundColor(Color.parseColor("#c62828"));
+                   errorText2.setText("Humidity increasing.");
+               }
+                 else if(temps>=25.0 && temps<= 29.0){
+                   errorText2.setText("Humidity under control");
+                   linearlayoutTwo.setBackgroundColor(Color.parseColor("#fece2f"));
+               }
+               else {
+
+                   errorText2.setText("Humidity under control");
+                   linearlayoutTwo.setBackgroundColor(Color.parseColor("#4caf50"));
+
+               }
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+
+           }
+       });
+
     }
 
 
